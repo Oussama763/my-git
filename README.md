@@ -1,0 +1,3 @@
+## my-git
+
+Creating a mini Git with the essential commands: init, add, commit, checkout ...
