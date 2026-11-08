@@ -4,8 +4,12 @@
 #include <string>
 #include <optional>
 
-namespace fs = std::filesystem
+namespace fs = std::filesystem;
 
+struct Config
+{
+
+};
 
 class GitRepo {
 private:
