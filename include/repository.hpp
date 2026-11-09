@@ -1,17 +1,20 @@
 #pragma once
 
 #include <filesystem>
-#include <string>
 #include <optional>
 
-namespace fs = std::filesystem
+namespace fs = std::filesystem;
 
+struct Config
+{
+
+};
 
 class GitRepo {
 private:
-	fs::path worktree;
-	fs::path gitdir;
-	Config config;
+	fs::path worktree_;
+	fs::path gitdir_;
+	Config config_;
 
 	void load_config(bool force);
 
@@ -23,9 +26,9 @@ public:
 	fs::path file(const fs::path& subpath, bool mkdirs = false) const;
 	fs::path dir(const fs::path& subpath, bool mkdirs = false) const;
 	
-	const fs::path& worktree() const {return worktree;}
-	const fs::path& gitdir() const {return gitdir;}
-	const Config& config() const {return config;}
+	const fs::path& worktree() const {return worktree_;}
+	const fs::path& gitdir() const {return gitdir_;}
+	const Config& config() const {return config_;}
 
 };
 
