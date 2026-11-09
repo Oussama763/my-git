@@ -10,14 +10,14 @@ class GitRepo;
 namespace gitima {
 
 enum class RefType {
-	Direct,
-	Symbolic
+	DIRECT,
+	SYMBOLIC,
 };
 
 struct Reference {
 	std::string name;
-	RefType type;
 	std::string target;
+	RefType type;
 };
 
 class RefManger {
