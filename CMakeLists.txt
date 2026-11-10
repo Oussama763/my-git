@@ -20,12 +20,10 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# 2. Fetch zlib (required for Git object compression)
-FetchContent_Declare(
-    zlib
-    URL https://github.com/madler/zlib/archive/refs/tags/v1.3.1.zip
-)
-FetchContent_MakeAvailable(zlib)
+# 2. find zlib (required for Git object compression)
+find_package(ZLIB REQUIRED)
+# 3. find openSSL
+find_package(OpenSSL REQUIRED)
 
 # Define source library (Core Git logic)
 add_library(git_core
@@ -36,7 +34,7 @@ add_library(git_core
 )
 
 # Link zlib to our core library
-target_link_libraries(git_core PRIVATE zlib)
+target_link_libraries(git_core PRIVATE ZLIB::ZLIB OpenSSL::Crypto)
 target_include_directories(git_core PUBLIC include)
 
 # Define main executable
@@ -46,6 +44,7 @@ target_link_libraries(my_git PRIVATE git_core)
 # Define unit tests
 add_executable(git_tests
     tests/test_main.cpp
+    tests/test_object.cpp
 )
 target_link_libraries(git_tests PRIVATE git_core gtest_main)
 
