@@ -45,6 +45,7 @@ target_link_libraries(my_git PRIVATE git_core)
 add_executable(git_tests
     tests/test_main.cpp
     tests/test_object.cpp
+    tests/test_repository.cpp
 )
 target_link_libraries(git_tests PRIVATE git_core gtest_main)
 

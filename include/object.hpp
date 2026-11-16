@@ -25,7 +25,6 @@ public:
     std::string_view fmt() const override { return "blob"; }
 
 };
-
 /*
 class GitTree : public GitObject
 {
